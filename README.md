@@ -1,9 +1,9 @@
 # XYPlot: Comfy plugin
 
 
-![Image](.workflows/preview_mini.png)
+![Image](./workflows/preview_mini.png)
 [Workflows](./workflows/xy_plot_mini.json)
-![Image](.workflows/preview_base.png)
+![Image](./workflows/preview_base.png)
 [Workflows](./workflows/xy_plot_base.json)
 
 
