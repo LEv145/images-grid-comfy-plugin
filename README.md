@@ -1,7 +1,10 @@
 # XYPlot: Comfy plugin
 
-![Image](.readme/preview_mini.png)
-![Image](.readme/preview_base.png)
+
+![Image](.workflows/preview_mini.png)
+[Workflows](./workflows/xy_plot_mini.json)
+![Image](.workflows/preview_base.png)
+[Workflows](./workflows/xy_plot_base.json)
 
 
 ## How to use
@@ -18,7 +21,3 @@ git clone https://github.com/LEv145/XY-plot-comfy-plugin XYPlot
 cd custom_nodes/XYPlot
 git pull
 ```
-
-## Workflows
-
-[Workflows](./workflows)
