@@ -13,18 +13,18 @@ class XYPlotNode(BasePlotNode):
             "required": {
                 "images": ("IMAGE",),
                 "gap": ("INT", {"default": 0, "min": 0}),
-                "nrow": ("INT", {"default": 1, "min": 1}),
+                "ncol": ("INT", {"default": 1, "min": 1}),
             },
         }
 
     def execute(
         self,
         images: Image,
-        nrow: int,
+        ncol: int,
         gap: int
     ) -> tuple[Image]:
         pillow_images = [tensor_to_pillow(i) for i in images]
-        pillow_grid = create_image_grid(pillow_images, nrow=nrow, gap=gap)
+        pillow_grid = create_image_grid(pillow_images, ncol=ncol, gap=gap)
         tensor_grid = pillow_to_tensor(pillow_grid)
 
         return (tensor_grid,)
