@@ -1,7 +1,9 @@
-from .src import LatentCombineNode, XYPlotNode
+from .src import LatentCombineNode, ImagesGridByColumnsNode, ImagesGridByRowsNode, ImageCombineNode
 
 
 NODE_CLASS_MAPPINGS = {
-    "XYPlot": XYPlotNode,
     "LatentCombine": LatentCombineNode,
+    "ImagesGridByColumns": ImagesGridByColumnsNode,
+    "ImagesGridByRows": ImagesGridByRowsNode,
+    "ImageCombine": ImageCombineNode,
 }

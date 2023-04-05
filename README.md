@@ -1,10 +1,10 @@
-# XYPlot: Comfy plugin
+# ImagesGrid: Comfy plugin
 
 
-![Image](./workflows/xy_plot_mini.png)
-[Workflows](./workflows/xy_plot_mini.json)
-![Image](./workflows/xy_plot_base.png)
-[Workflows](./workflows/xy_plot_base.json)
+![Image](./workflows/mini.png)
+[Workflows](./workflows/mini.json)
+![Image](./workflows/base.png)
+[Workflows](./workflows/base.json)
 
 
 ## How to use
@@ -13,11 +13,11 @@
 
 ```
 cd custom_nodes  # From comfy path
-git clone https://github.com/LEv145/XY-plot-comfy-plugin XYPlot
+git clone https://github.com/LEv145/images-grid-comfy-plugin ImagesGrid
 ```
 ### Update
 
 ```
-cd custom_nodes/XYPlot
+cd custom_nodes/ImagesGrid
 git pull
 ```

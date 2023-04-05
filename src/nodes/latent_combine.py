@@ -2,10 +2,10 @@ import typing as t
 
 import torch
 
-from ..base import BasePlotNode, Image
+from ..base import BaseNode, Image
 
 
-class LatentCombineNode(BasePlotNode):
+class LatentCombineNode(BaseNode):
     RETURN_TYPES: t.Tuple[str] = ("LATENT",)
 
     @classmethod
@@ -22,8 +22,6 @@ class LatentCombineNode(BasePlotNode):
         latent_1: t.Dict[str, t.Any],
         latent_2: t.Dict[str, t.Any],
     ) -> t.Tuple[t.Dict[str, t.Any]]:
-        latent_1_samples = latent_1["samples"]
-        latent_2_samples = latent_2["samples"]
-        samples = torch.cat((latent_1_samples, latent_2_samples), 0)
+        samples = torch.cat((latent_1["samples"], latent_2["samples"]), 0)
 
         return ({"samples": samples},)
