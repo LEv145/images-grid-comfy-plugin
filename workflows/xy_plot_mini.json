@@ -50,8 +50,8 @@
       ],
       "outputs": [
         {
-          "name": "FLOAT_IMAGE",
-          "type": "FLOAT_IMAGE",
+          "name": "IMAGES",
+          "type": "IMAGES",
           "links": [
             12
           ],
@@ -79,19 +79,19 @@
       "inputs": [
         {
           "name": "float_image_1",
-          "type": "FLOAT_IMAGE",
+          "type": "IMAGES",
           "link": 12
         },
         {
           "name": "float_image_2",
-          "type": "FLOAT_IMAGE",
+          "type": "IMAGES",
           "link": 13
         }
       ],
       "outputs": [
         {
-          "name": "FLOAT_IMAGE",
-          "type": "FLOAT_IMAGE",
+          "name": "IMAGES",
+          "type": "IMAGES",
           "links": [
             32
           ],
@@ -119,19 +119,19 @@
       "inputs": [
         {
           "name": "float_image_1",
-          "type": "FLOAT_IMAGE",
+          "type": "IMAGES",
           "link": 32
         },
         {
           "name": "float_image_2",
-          "type": "FLOAT_IMAGE",
+          "type": "IMAGES",
           "link": 22
         }
       ],
       "outputs": [
         {
-          "name": "FLOAT_IMAGE",
-          "type": "FLOAT_IMAGE",
+          "name": "IMAGES",
+          "type": "IMAGES",
           "links": [
             24
           ],
@@ -166,8 +166,8 @@
       ],
       "outputs": [
         {
-          "name": "FLOAT_IMAGE",
-          "type": "FLOAT_IMAGE",
+          "name": "IMAGES",
+          "type": "IMAGES",
           "links": [
             13
           ],
@@ -201,8 +201,8 @@
       ],
       "outputs": [
         {
-          "name": "FLOAT_IMAGE",
-          "type": "FLOAT_IMAGE",
+          "name": "IMAGES",
+          "type": "IMAGES",
           "links": [
             22
           ],
@@ -303,8 +303,8 @@
       "mode": 0,
       "inputs": [
         {
-          "name": "float_image",
-          "type": "FLOAT_IMAGE",
+          "name": "images",
+          "type": "IMAGES",
           "link": 24
         }
       ],
@@ -371,7 +371,7 @@
       0,
       12,
       0,
-      "FLOAT_IMAGE"
+      "IMAGES"
     ],
     [
       13,
@@ -379,7 +379,7 @@
       0,
       12,
       1,
-      "FLOAT_IMAGE"
+      "IMAGES"
     ],
     [
       20,
@@ -395,7 +395,7 @@
       0,
       19,
       1,
-      "FLOAT_IMAGE"
+      "IMAGES"
     ],
     [
       24,
@@ -403,7 +403,7 @@
       0,
       17,
       0,
-      "FLOAT_IMAGE"
+      "IMAGES"
     ],
     [
       32,
@@ -411,7 +411,7 @@
       0,
       19,
       0,
-      "FLOAT_IMAGE"
+      "IMAGES"
     ],
     [
       73,

@@ -1,8 +1,7 @@
-from .src import ImageSetAreaNode, FloatImageCombineNode, XYPlotNode
+from .src import LatentCombineNode, XYPlotNode
 
 
 NODE_CLASS_MAPPINGS = {
-    "ImageSetArea": ImageSetAreaNode,
-    "FloatImageCombine": FloatImageCombineNode,
     "XYPlot": XYPlotNode,
+    "LatentCombine": LatentCombineNode,
 }

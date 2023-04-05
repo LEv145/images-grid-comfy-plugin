@@ -1,13 +1,10 @@
 import typing as t
 
-from ..base import BasePlotNode, FloatImage, Image
+from ..base import BasePlotNode, Image
 
 
 class ImageSetAreaNode(BasePlotNode):
-    RETURN_TYPES: t.Tuple[str] = ("FLOAT_IMAGE",)
-
-    def __init__(self):
-        pass
+    RETURN_TYPES: t.Tuple[str] = ("IMAGES",)
 
     @classmethod
     def INPUT_TYPES(cls) -> t.Dict[str, t.Any]:
@@ -17,5 +14,5 @@ class ImageSetAreaNode(BasePlotNode):
             },
         }
 
-    def execute(self, image: Image) -> tuple[FloatImage]:
+    def execute(self, image: Image) -> t.Tuple[t.List[Image]]:
         return ([image],)

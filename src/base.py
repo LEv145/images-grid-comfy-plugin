@@ -1,4 +1,5 @@
 import typing as t
+from dataclasses import dataclass
 
 
 class BasePlotNode():
@@ -6,5 +7,10 @@ class BasePlotNode():
     FUNCTION: str = "execute"
 
 
+@dataclass
+class KSamplerXYPlotInput():
+    setting: str
+    value: int
+
+
 Image = t.Any
-FloatImage = list[Image]
