@@ -91,7 +91,7 @@ def _draw_center_text(
     draw: ImageDraw.ImageDraw,
     xy: t.Tuple[int, int, int, int],
     text: str,
-    fill = "black",
+    fill: t.Any = "black",
 ) -> None:
     _, _, *text_size = draw.textbbox((0, 0), text)
     draw.text(
