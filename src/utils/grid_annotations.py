@@ -19,7 +19,7 @@ def create_grid_annotations(
     margin: int = 5,
 ) -> Image.Image:
     grid = grid_info.image
-    left_padding = int(max(font.getlength(text) for text in row_texts) + 2*margin)  # type: ignore
+    left_padding = int(max(map(font.getlength, row_texts))) + 2*margin  # type: ignore
     top_padding = font.size + 2*margin  # type: ignore
 
     image = Image.new(
