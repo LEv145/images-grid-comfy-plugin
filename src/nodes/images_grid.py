@@ -4,8 +4,8 @@ from ..base import BaseNode, Image
 from ..utils import (
     tensor_to_pillow,
     pillow_to_tensor,
-    create_image_grid_by_columns,
-    create_image_grid_by_rows,
+    create_images_grid_by_columns,
+    create_images_grid_by_rows,
 )
 
 
@@ -36,7 +36,7 @@ class ImagesGridByColumnsNode(BaseImagesGridNode):
         return cls._create_input_types("max_columns")
 
     def execute(self, images: Image, **kw) -> tuple[Image]:
-        return self._create_execute(images, create_image_grid_by_columns, kw)
+        return self._create_execute(images, create_images_grid_by_columns, kw)
 
 
 class ImagesGridByRowsNode(BaseImagesGridNode):
@@ -45,4 +45,4 @@ class ImagesGridByRowsNode(BaseImagesGridNode):
         return cls._create_input_types("max_rows")
 
     def execute(self, images: Image, **kw) -> tuple[Image]:
-        return self._create_execute(images, create_image_grid_by_rows, kw)
+        return self._create_execute(images, create_images_grid_by_rows, kw)
