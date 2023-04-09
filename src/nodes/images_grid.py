@@ -1,6 +1,8 @@
 import typing as t
 
-from ..base import BaseNode, Image
+import torch
+
+from ..base import BaseNode
 from ..utils import (
     tensor_to_pillow,
     pillow_to_tensor,
@@ -8,7 +10,6 @@ from ..utils import (
     create_images_grid_by_rows,
     Annotation,
 )
-
 
 class BaseImagesGridNode(BaseNode):
     RETURN_TYPES: tuple[str] = ("IMAGE",)
@@ -30,11 +31,11 @@ class BaseImagesGridNode(BaseNode):
         self,
         function: t.Callable,
         \
-        images: Image,
+        images: torch.Tensor,
         gap: int,
         annotation: Annotation | None = None,
         **kw,
-    ) -> tuple[Image]:
+    ) -> tuple[torch.Tensor]:
         pillow_images = [tensor_to_pillow(i) for i in images]
         pillow_grid = function(
             images=pillow_images,
@@ -52,7 +53,7 @@ class ImagesGridByColumnsNode(BaseImagesGridNode):
     def INPUT_TYPES(cls) -> dict[str, t.Any]:
         return cls._create_input_types("max_columns")
 
-    def execute(self, **kw) -> tuple[Image]:
+    def execute(self, **kw) -> tuple[torch.Tensor]:
         return self._create_execute(create_images_grid_by_columns, **kw)
 
 
@@ -61,5 +62,5 @@ class ImagesGridByRowsNode(BaseImagesGridNode):
     def INPUT_TYPES(cls) -> dict[str, t.Any]:
         return cls._create_input_types("max_rows")
 
-    def execute(self, **kw) -> tuple[Image]:
+    def execute(self, **kw) -> tuple[torch.Tensor]:
         return self._create_execute(create_images_grid_by_rows, **kw)

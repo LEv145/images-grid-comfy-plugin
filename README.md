@@ -11,6 +11,7 @@
 
 ### Install
 
+https://github.com/LEv145/images-grid-comfy-plugin/archive/refs/heads/main.zip
 ```
 cd custom_nodes  # From comfy path
 git clone https://github.com/LEv145/images-grid-comfy-plugin ImagesGrid

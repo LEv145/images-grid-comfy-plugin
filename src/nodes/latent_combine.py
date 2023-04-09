@@ -2,7 +2,7 @@ import typing as t
 
 import torch
 
-from ..base import BaseNode, Image
+from ..base import BaseNode
 
 
 class LatentCombineNode(BaseNode):
@@ -19,9 +19,9 @@ class LatentCombineNode(BaseNode):
 
     def execute(
         self,
-        latent_1: dict[str, t.Any],
-        latent_2: dict[str, t.Any],
-    ) -> tuple[dict[str, t.Any]]:
+        latent_1: dict[str, torch.Tensor],
+        latent_2: dict[str, torch.Tensor],
+    ) -> tuple[dict[str, torch.Tensor]]:
         samples = torch.cat((latent_1["samples"], latent_2["samples"]), 0)
 
         return ({"samples": samples},)

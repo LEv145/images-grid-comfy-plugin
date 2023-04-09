@@ -2,7 +2,7 @@ import typing as t
 
 import torch
 
-from ..base import BaseNode, Image
+from ..base import BaseNode
 
 
 class ImageCombineNode(BaseNode):
@@ -19,9 +19,9 @@ class ImageCombineNode(BaseNode):
 
     def execute(
         self,
-        image_1: Image,
-        image_2: Image,
-    ) -> tuple[Image]:
+        image_1: torch.Tensor,
+        image_2: torch.Tensor,
+    ) -> tuple[torch.Tensor]:
         result = torch.cat((image_1, image_2), 0)
 
         return (result,)
