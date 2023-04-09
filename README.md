@@ -1,6 +1,5 @@
 # ImagesGrid: Comfy plugin
 
-
 ## Preview
 
 ### Simple grid of images
