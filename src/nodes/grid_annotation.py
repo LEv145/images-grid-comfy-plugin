@@ -15,7 +15,7 @@ class GridAnnotationNode(BaseNode):
             "required": {
                 "column_texts": ("STRING", {"multiline": False}),
                 "row_texts": ("STRING", {"multiline": False}),
-                "font_size": ("INT", {"default": 30, "min": 1}),
+                "font_size": ("INT", {"default": 50, "min": 1}),
             },
         }
 
