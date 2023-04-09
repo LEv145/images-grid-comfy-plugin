@@ -2,14 +2,14 @@ import typing as t
 
 import torch
 
-from ..base import BaseNode, Image
+from ..base import BaseNode
 
 
 class LatentCombineNode(BaseNode):
-    RETURN_TYPES: t.Tuple[str] = ("LATENT",)
+    RETURN_TYPES: tuple[str] = ("LATENT",)
 
     @classmethod
-    def INPUT_TYPES(cls) -> t.Dict[str, t.Any]:
+    def INPUT_TYPES(cls) -> dict[str, t.Any]:
         return {
             "required": {
                 "latent_1": ("LATENT",),
@@ -19,9 +19,9 @@ class LatentCombineNode(BaseNode):
 
     def execute(
         self,
-        latent_1: t.Dict[str, t.Any],
-        latent_2: t.Dict[str, t.Any],
-    ) -> t.Tuple[t.Dict[str, t.Any]]:
+        latent_1: dict[str, torch.Tensor],
+        latent_2: dict[str, torch.Tensor],
+    ) -> tuple[dict[str, torch.Tensor]]:
         samples = torch.cat((latent_1["samples"], latent_2["samples"]), 0)
 
         return ({"samples": samples},)

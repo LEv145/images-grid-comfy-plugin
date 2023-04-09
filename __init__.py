@@ -1,4 +1,10 @@
-from .src import LatentCombineNode, ImagesGridByColumnsNode, ImagesGridByRowsNode, ImageCombineNode
+from .src import (
+    LatentCombineNode,
+    ImagesGridByColumnsNode,
+    ImagesGridByRowsNode,
+    ImageCombineNode,
+    GridAnnotationNode,
+)
 
 
 NODE_CLASS_MAPPINGS = {
@@ -6,4 +12,5 @@ NODE_CLASS_MAPPINGS = {
     "ImagesGridByColumns": ImagesGridByColumnsNode,
     "ImagesGridByRows": ImagesGridByRowsNode,
     "ImageCombine": ImageCombineNode,
+    "GridAnnotation": GridAnnotationNode,
 }
