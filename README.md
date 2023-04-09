@@ -5,11 +5,11 @@
 
 ### Simple grid of images
 
-![Image](./workflows/mini.png)
+![Image](https://github.com/LEv145/images-grid-comfy-plugin/blob/main/workflows/mini.png?raw=true)
 
 ### XYZPlot, like in auto1111, but with more settings
 
-![Image](./workflows/base.png)
+![Image](https://github.com/LEv145/images-grid-comfy-plugin/blob/main/workflows/base.png?raw=true)
 
 Workflows: https://github.com/LEv145/images-grid-comfy-plugin/tree/main/workflows
 
