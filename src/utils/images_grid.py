@@ -77,7 +77,8 @@ def _arrange_images_on_grid(
     gap: int,
 ):
     for i, image in enumerate(images):
-        image = image.crop((0, 0, size[0], size[1]))
+        if image.size != size:
+            image = image.crop((0, 0, *size))
         x = (i % max_columns) * (size[0] + gap)
         y = (i // max_columns) * (size[1] + gap)
 
