@@ -1,0 +1,471 @@
+{
+  "last_node_id": 8,
+  "last_link_id": 16,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "Efficient Loader",
+      "pos": [
+        214,
+        242
+      ],
+      "size": {
+        "0": 446.5,
+        "1": 499.79998779296875
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            2
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            3
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            4
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            5
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "Meina-v9.safetensors",
+        "novelai.vae.pt",
+        -2,
+        "1girl, (hanfu), sidelighting, wallpaper",
+        "(worst quality:2, low quality:2), (zombie, sketch, interlocked fingers, comic)",
+        512,
+        512,
+        1
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 7,
+      "type": "PreviewImage",
+      "pos": [
+        1703,
+        302
+      ],
+      "size": {
+        "0": 334.94000244140625,
+        "1": 239.1999969482422
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 15
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Preview Image"
+      }
+    },
+    {
+      "id": 5,
+      "type": "ImagesGridByColumns",
+      "pos": [
+        1369,
+        302
+      ],
+      "size": {
+        "0": 315,
+        "1": 102
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 14
+        },
+        {
+          "name": "annotation",
+          "type": "GRID_ANNOTATION",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImagesGridByColumns"
+      },
+      "widgets_values": [
+        0,
+        3
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 8,
+      "type": "GridAnnotation",
+      "pos": [
+        1041,
+        386
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "GRID_ANNOTATION",
+          "type": "GRID_ANNOTATION",
+          "links": [
+            16
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GridAnnotation"
+      },
+      "widgets_values": [
+        "Steps: 20; Steps: 30; Steps: 40;",
+        "CGF: 7; CGF: 9; CGF: 11;",
+        50
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [
+        1218,
+        329
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 11,
+          "slot_index": 0
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAE Decode"
+      }
+    },
+    {
+      "id": 3,
+      "type": "XY Plot",
+      "pos": [
+        258,
+        783
+      ],
+      "size": [
+        403.35785644531256,
+        244
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Plot"
+      },
+      "widgets_values": [
+        "Steps",
+        "20;30;40",
+        "CFG Scale",
+        "7;9;11",
+        0,
+        "False",
+        0,
+        "____________EXAMPLES____________\n(X/Y_types)     (X/Y_values)\nLatent Batch    n/a\nSeeds++ Batch   3\nSteps           15;20;25\nCFG Scale       5;10;15;20\nSampler(1)      dpmpp_2s_ancestral;euler;ddim\nSampler(2)      dpmpp_2m,karras;heun,normal\nDenoise         .3;.4;.5;.6;.7\nVAE             vae_1; vae_2; vae_3\n\n____________SAMPLERS____________\neuler;\neuler_ancestral;\nheun;\ndpm_2;\ndpm_2_ancestral;\nlms;\ndpm_fast;\ndpm_adaptive;\ndpmpp_2s_ancestral;\ndpmpp_sde;\ndpmpp_2m;\nddim;\nuni_pc;\nuni_pc_bh2\n\n___________SCHEDULERS___________\nkarras;\nnormal;\nsimple;\nddim_uniform\n\n______________VAE_______________\nkl-f8-anime2.ckpt;\nnovelai.vae.pt;\nvae-ft-mse-840000-ema-pruned.ckpt\n\n_____________NOTES______________\n- During a 'Latent Batch', the corresponding X/Y_value is ignored.\n- During a 'Latent Batch', the latent_id is ignored.\n- For a 'Seeds++ Batch', starting seed is defined by the KSampler.\n- Trailing semicolons are ignored in the X/Y_values.\n- Parameter types not set by this node are defined in the KSampler."
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 2,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        685,
+        242
+      ],
+      "size": {
+        "0": 330,
+        "1": 374
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 2
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 4
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 5
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": null
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": null
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": null
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            11
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        "Script",
+        0,
+        428398671204662,
+        false,
+        20,
+        7,
+        "dpmpp_2m",
+        "karras",
+        1,
+        "Enabled"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      1,
+      1,
+      2,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      3,
+      1,
+      2,
+      2,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      1,
+      3,
+      2,
+      3,
+      "LATENT"
+    ],
+    [
+      5,
+      1,
+      4,
+      2,
+      4,
+      "VAE"
+    ],
+    [
+      6,
+      3,
+      0,
+      2,
+      5,
+      "SCRIPT"
+    ],
+    [
+      11,
+      2,
+      3,
+      6,
+      0,
+      "LATENT"
+    ],
+    [
+      12,
+      2,
+      4,
+      6,
+      1,
+      "VAE"
+    ],
+    [
+      14,
+      6,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      15,
+      5,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ],
+    [
+      16,
+      8,
+      0,
+      5,
+      1,
+      "GRID_ANNOTATION"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

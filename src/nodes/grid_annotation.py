@@ -38,7 +38,7 @@ class GridAnnotationNode(BaseNode):
 
     def _get_texts_from_string(self, string: str) -> list[str]:
         return [
-            result
+            result.replace("\\n", "\n")
             for i in string.split(";")
             if (result := i.strip()) != ""
         ]

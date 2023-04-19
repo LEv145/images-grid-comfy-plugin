@@ -181,7 +181,7 @@ def _draw_center_text(
     fill: t.Any = "black",
 ) -> None:
     _, _, *text_size = draw.textbbox((0, 0), text)
-    draw.text(
+    draw.multiline_text(
         (
             (xy[2] - text_size[0] + xy[0]) / 2,
             (xy[3] - text_size[1] + xy[1]) / 2,
