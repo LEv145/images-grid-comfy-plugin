@@ -13,7 +13,7 @@
 
 ![Image](https://github.com/LEv145/images-grid-comfy-plugin/blob/main/workflows/base.png?raw=true)
 
-### integration with [`efficiency`](https://github.com/LucianoCirino/efficiency-nodes-comfyui)
+### Integration with [`efficiency`](https://github.com/LucianoCirino/efficiency-nodes-comfyui)
 
 ![Image](https://github.com/LEv145/images-grid-comfy-plugin/blob/main/workflows/efficiency.png?raw=true)
 
