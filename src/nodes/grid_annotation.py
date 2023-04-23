@@ -7,14 +7,15 @@ from ..utils import Annotation
 
 
 class GridAnnotationNode(BaseNode):
-    RETURN_TYPES: tuple[str] = ("GRID_ANNOTATION",)
+    RETURN_TYPES: tuple[str, ...] = ("GRID_ANNOTATION", "INT", "INT")
+    RETURN_NAMES: tuple[str, ...] = ("GRID_ANNOTATION", "COLUMNS_COUNT", "ROWS_COUNT")
 
     @classmethod
     def INPUT_TYPES(cls) -> dict[str, t.Any]:
         return {
             "required": {
-                "column_texts": ("STRING", {"multiline": False}),
-                "row_texts": ("STRING", {"multiline": False}),
+                "column_texts": ("STRING", {"multiline": True}),
+                "row_texts": ("STRING", {"multiline": True}),
                 "font_size": ("INT", {"default": 50, "min": 1}),
             },
         }
@@ -24,7 +25,7 @@ class GridAnnotationNode(BaseNode):
         column_texts: str,
         row_texts: str,
         font_size: int,
-    ) -> tuple[Annotation]:
+    ) -> tuple[Annotation, int, int]:
         font = ImageFont.truetype(str(STATIC_PATH / "Roboto-Regular.ttf"), size=font_size)
         column_texts_list = self._set_value_to_texts_list(
             self._get_texts_from_string(column_texts),
@@ -34,11 +35,11 @@ class GridAnnotationNode(BaseNode):
         )
 
         result = Annotation(column_texts=column_texts_list, row_texts=row_texts_list, font=font)
-        return (result,)
+        return (result, len(column_texts_list), len(row_texts_list))
 
     def _get_texts_from_string(self, string: str) -> list[str]:
         return [
-            result.replace("\\n", "\n")
+            result
             for i in string.split(";")
             if (result := i.strip()) != ""
         ]

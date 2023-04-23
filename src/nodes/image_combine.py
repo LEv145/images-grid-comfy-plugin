@@ -6,7 +6,7 @@ from ..base import BaseNode
 
 
 class ImageCombineNode(BaseNode):
-    RETURN_TYPES: tuple[str] = ("IMAGE",)
+    RETURN_TYPES: tuple[str, ...] = ("IMAGE",)
 
     @classmethod
     def INPUT_TYPES(cls) -> dict[str, t.Any]:
