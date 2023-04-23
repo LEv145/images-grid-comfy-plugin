@@ -12,7 +12,7 @@ from ..utils import (
 )
 
 class BaseImagesGridNode(BaseNode):
-    RETURN_TYPES: tuple[str] = ("IMAGE",)
+    RETURN_TYPES: tuple[str, ...] = ("IMAGE",)
 
     @classmethod
     def _create_input_types(cls, coordinate_name: str) -> dict[str, t.Any]:

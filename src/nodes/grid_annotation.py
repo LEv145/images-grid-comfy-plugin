@@ -7,14 +7,14 @@ from ..utils import Annotation
 
 
 class GridAnnotationNode(BaseNode):
-    RETURN_TYPES: tuple[str] = ("GRID_ANNOTATION",)
+    RETURN_TYPES: tuple[str, ...] = ("GRID_ANNOTATION",)
 
     @classmethod
     def INPUT_TYPES(cls) -> dict[str, t.Any]:
         return {
             "required": {
-                "column_texts": ("STRING", {"multiline": False}),
-                "row_texts": ("STRING", {"multiline": False}),
+                "column_texts": ("STRING", {"multiline": True}),
+                "row_texts": ("STRING", {"multiline": True}),
                 "font_size": ("INT", {"default": 50, "min": 1}),
             },
         }
@@ -38,7 +38,7 @@ class GridAnnotationNode(BaseNode):
 
     def _get_texts_from_string(self, string: str) -> list[str]:
         return [
-            result.replace("\\n", "\n")
+            result
             for i in string.split(";")
             if (result := i.strip()) != ""
         ]

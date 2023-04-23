@@ -1,20 +1,207 @@
 {
-  "last_node_id": 8,
-  "last_link_id": 16,
+  "last_node_id": 19,
+  "last_link_id": 36,
   "nodes": [
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [
+        1083,
+        263
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {
+        "pinned": true,
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 11,
+          "slot_index": 0
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            29
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAE Decode"
+      }
+    },
+    {
+      "id": 3,
+      "type": "XY Plot",
+      "pos": [
+        529,
+        778
+      ],
+      "size": {
+        "0": 225.0937042236328,
+        "1": 244
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "links": [
+            23
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Plot"
+      },
+      "widgets_values": [
+        "Steps",
+        "20;30;40",
+        "CFG Scale",
+        "7;9;11",
+        10,
+        "False",
+        0,
+        "____________EXAMPLES____________\n(X/Y_types)     (X/Y_values)\nLatent Batch    n/a\nSeeds++ Batch   3\nSteps           15;20;25\nCFG Scale       5;10;15;20\nSampler(1)      dpmpp_2s_ancestral;euler;ddim\nSampler(2)      dpmpp_2m,karras;heun,normal\nDenoise         .3;.4;.5;.6;.7\nVAE             vae_1; vae_2; vae_3\n\n____________SAMPLERS____________\neuler;\neuler_ancestral;\nheun;\ndpm_2;\ndpm_2_ancestral;\nlms;\ndpm_fast;\ndpm_adaptive;\ndpmpp_2s_ancestral;\ndpmpp_sde;\ndpmpp_2m;\nddim;\nuni_pc;\nuni_pc_bh2\n\n___________SCHEDULERS___________\nkarras;\nnormal;\nsimple;\nddim_uniform\n\n______________VAE_______________\nkl-f8-anime2.ckpt;\nnovelai.vae.pt;\nvae-ft-mse-840000-ema-pruned.ckpt\n\n_____________NOTES______________\n- During a 'Latent Batch', the corresponding X/Y_value is ignored.\n- During a 'Latent Batch', the latent_id is ignored.\n- For a 'Seeds++ Batch', starting seed is defined by the KSampler.\n- Trailing semicolons are ignored in the X/Y_values.\n- Parameter types not set by this node are defined in the KSampler."
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 2,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        767,
+        252
+      ],
+      "size": {
+        "0": 288.36614990234375,
+        "1": 374
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 2
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 4
+        },
+        {
+          "name": "optional_vae",
+          "type": "VAE",
+          "link": 5
+        },
+        {
+          "name": "script",
+          "type": "SCRIPT",
+          "link": 23,
+          "slot_index": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": []
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": []
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": null
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            11
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        "Script",
+        0,
+        428398671204662,
+        false,
+        20,
+        7,
+        "dpmpp_2m",
+        "karras",
+        1,
+        "Enabled"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
     {
       "id": 1,
       "type": "Efficient Loader",
       "pos": [
-        214,
-        242
+        529,
+        251
       ],
       "size": {
-        "0": 446.5,
-        "1": 499.79998779296875
+        "0": 222.70794677734375,
+        "1": 490.5440673828125
       },
       "flags": {},
-      "order": 0,
+      "order": 1,
       "mode": 0,
       "outputs": [
         {
@@ -80,15 +267,62 @@
       "bgcolor": "#335"
     },
     {
+      "id": 5,
+      "type": "ImagesGridByColumns",
+      "pos": [
+        1293,
+        247
+      ],
+      "size": [
+        315,
+        102
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 29,
+          "slot_index": 0
+        },
+        {
+          "name": "annotation",
+          "type": "GRID_ANNOTATION",
+          "link": 36
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImagesGridByColumns"
+      },
+      "widgets_values": [
+        5,
+        3
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
       "id": 7,
       "type": "PreviewImage",
       "pos": [
-        1703,
-        302
+        1290,
+        388
       ],
       "size": {
-        "0": 334.94000244140625,
-        "1": 239.1999969482422
+        "0": 737.5480346679688,
+        "1": 635.1529541015625
       },
       "flags": {
         "collapsed": false
@@ -107,71 +341,25 @@
       }
     },
     {
-      "id": 5,
-      "type": "ImagesGridByColumns",
-      "pos": [
-        1369,
-        302
-      ],
-      "size": {
-        "0": 315,
-        "1": 102
-      },
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 14
-        },
-        {
-          "name": "annotation",
-          "type": "GRID_ANNOTATION",
-          "link": 16
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            15
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ImagesGridByColumns"
-      },
-      "widgets_values": [
-        0,
-        3
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 8,
+      "id": 19,
       "type": "GridAnnotation",
       "pos": [
-        1041,
-        386
+        1070,
+        305
       ],
-      "size": {
-        "0": 315,
-        "1": 106
-      },
+      "size": [
+        210,
+        326
+      ],
       "flags": {},
-      "order": 1,
+      "order": 2,
       "mode": 0,
       "outputs": [
         {
           "name": "GRID_ANNOTATION",
           "type": "GRID_ANNOTATION",
           "links": [
-            16
+            36
           ],
           "slot_index": 0
         }
@@ -180,198 +368,12 @@
         "Node name for S&R": "GridAnnotation"
       },
       "widgets_values": [
-        "Steps: 20; Steps: 30; Steps: 40;",
-        "CGF: 7; CGF: 9; CGF: 11;",
+        "Steps: 20;Steps: 30;Steps: 40",
+        "CGF: 7\nQuality: 10/10;\nCGF: 9\nQuality: 9/10;\nCGF: 11\nQuality: 5/10;",
         50
       ],
       "color": "#322",
       "bgcolor": "#533"
-    },
-    {
-      "id": 6,
-      "type": "VAEDecode",
-      "pos": [
-        1218,
-        329
-      ],
-      "size": {
-        "0": 210,
-        "1": 46
-      },
-      "flags": {
-        "pinned": true,
-        "collapsed": true
-      },
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "samples",
-          "type": "LATENT",
-          "link": 11,
-          "slot_index": 0
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 12
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            14
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "VAE Decode"
-      }
-    },
-    {
-      "id": 3,
-      "type": "XY Plot",
-      "pos": [
-        258,
-        783
-      ],
-      "size": [
-        403.35785644531256,
-        244
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "script",
-          "type": "SCRIPT",
-          "links": [
-            6
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "XY Plot"
-      },
-      "widgets_values": [
-        "Steps",
-        "20;30;40",
-        "CFG Scale",
-        "7;9;11",
-        0,
-        "False",
-        0,
-        "____________EXAMPLES____________\n(X/Y_types)     (X/Y_values)\nLatent Batch    n/a\nSeeds++ Batch   3\nSteps           15;20;25\nCFG Scale       5;10;15;20\nSampler(1)      dpmpp_2s_ancestral;euler;ddim\nSampler(2)      dpmpp_2m,karras;heun,normal\nDenoise         .3;.4;.5;.6;.7\nVAE             vae_1; vae_2; vae_3\n\n____________SAMPLERS____________\neuler;\neuler_ancestral;\nheun;\ndpm_2;\ndpm_2_ancestral;\nlms;\ndpm_fast;\ndpm_adaptive;\ndpmpp_2s_ancestral;\ndpmpp_sde;\ndpmpp_2m;\nddim;\nuni_pc;\nuni_pc_bh2\n\n___________SCHEDULERS___________\nkarras;\nnormal;\nsimple;\nddim_uniform\n\n______________VAE_______________\nkl-f8-anime2.ckpt;\nnovelai.vae.pt;\nvae-ft-mse-840000-ema-pruned.ckpt\n\n_____________NOTES______________\n- During a 'Latent Batch', the corresponding X/Y_value is ignored.\n- During a 'Latent Batch', the latent_id is ignored.\n- For a 'Seeds++ Batch', starting seed is defined by the KSampler.\n- Trailing semicolons are ignored in the X/Y_values.\n- Parameter types not set by this node are defined in the KSampler."
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 2,
-      "type": "KSampler (Efficient)",
-      "pos": [
-        685,
-        242
-      ],
-      "size": {
-        "0": 330,
-        "1": 374
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 1
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 2
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 3
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 4
-        },
-        {
-          "name": "optional_vae",
-          "type": "VAE",
-          "link": 5
-        },
-        {
-          "name": "script",
-          "type": "SCRIPT",
-          "link": 6
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": null
-        },
-        {
-          "name": "CONDITIONING+",
-          "type": "CONDITIONING",
-          "links": null
-        },
-        {
-          "name": "CONDITIONING-",
-          "type": "CONDITIONING",
-          "links": null
-        },
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            11
-          ],
-          "slot_index": 3
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            12
-          ],
-          "slot_index": 4
-        },
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "KSampler (Efficient)"
-      },
-      "widgets_values": [
-        "Script",
-        0,
-        428398671204662,
-        false,
-        20,
-        7,
-        "dpmpp_2m",
-        "karras",
-        1,
-        "Enabled"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
     }
   ],
   "links": [
@@ -416,14 +418,6 @@
       "VAE"
     ],
     [
-      6,
-      3,
-      0,
-      2,
-      5,
-      "SCRIPT"
-    ],
-    [
       11,
       2,
       3,
@@ -440,14 +434,6 @@
       "VAE"
     ],
     [
-      14,
-      6,
-      0,
-      5,
-      0,
-      "IMAGE"
-    ],
-    [
       15,
       5,
       0,
@@ -456,8 +442,24 @@
       "IMAGE"
     ],
     [
-      16,
-      8,
+      23,
+      3,
+      0,
+      2,
+      5,
+      "SCRIPT"
+    ],
+    [
+      29,
+      6,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      36,
+      19,
       0,
       5,
       1,

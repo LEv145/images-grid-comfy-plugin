@@ -6,7 +6,7 @@ from ..base import BaseNode
 
 
 class LatentCombineNode(BaseNode):
-    RETURN_TYPES: tuple[str] = ("LATENT",)
+    RETURN_TYPES: tuple[str, ...] = ("LATENT",)
 
     @classmethod
     def INPUT_TYPES(cls) -> dict[str, t.Any]:

@@ -5,18 +5,14 @@ from contextlib import suppress
 from PIL import Image, ImageDraw, ImageFont
 
 
+WIDEST_LETTER = "W"
+
+
 @dataclass
 class Annotation():
     column_texts: list[str]
     row_texts: list[str]
     font: ImageFont.FreeTypeFont
-
-
-@dataclass
-class _GridInfo():
-    image: Image.Image
-    gap: int
-    one_image_size: tuple[int, int]
 
 
 def create_images_grid_by_columns(
@@ -39,6 +35,13 @@ def create_images_grid_by_rows(
     return _create_images_grid(images, gap, max_columns, max_rows, annotation)
 
 
+@dataclass
+class _GridInfo():
+    image: Image.Image
+    gap: int
+    one_image_size: tuple[int, int]
+
+
 def _create_images_grid(
     images: list[Image.Image],
     gap: int,
@@ -56,7 +59,7 @@ def _create_images_grid(
 
     if annotation is None:
         return grid_image
-    return _create_grid_annotations(
+    return _create_grid_annotation(
         grid_info=_GridInfo(
             image=grid_image,
             gap=gap,
@@ -77,27 +80,31 @@ def _arrange_images_on_grid(
     gap: int,
 ):
     for i, image in enumerate(images):
-        if image.size != size:
-            image = image.crop((0, 0, *size))
         x = (i % max_columns) * (size[0] + gap)
         y = (i // max_columns) * (size[1] + gap)
 
         grid_image.paste(image, (x, y))
 
 
-def _create_grid_annotations(
+def _create_grid_annotation(
     grid_info: _GridInfo,
-    column_texts,
-    row_texts,
+    column_texts: list[str],
+    row_texts: list[str],
     font: ImageFont.FreeTypeFont,
 ) -> Image.Image:
     if not column_texts or not row_texts:
         raise ValueError("Column text or row text is empty")
 
     grid = grid_info.image
-    margin = font.size // 2
-    left_padding = int(max(map(font.getlength, row_texts))) + 2*margin
-    top_padding = font.size + 2*margin
+    left_padding = int(
+        max(
+            font.getlength(splitted_text)
+            for raw_text in row_texts
+            for splitted_text in raw_text.split("\n")
+        )
+        + font.getlength(WIDEST_LETTER)*2
+    )
+    top_padding = int(font.size * 2)
 
     image = Image.new(
         "RGB",
@@ -105,6 +112,7 @@ def _create_grid_annotations(
         color="white",
     )
     draw = ImageDraw.Draw(image)
+    # https://github.com/python-pillow/Pillow/blob/9.5.x/docs/reference/ImageDraw.rst
     draw.font = font  # type: ignore
 
     _paste_image_to_lower_left_corner(image, grid)
