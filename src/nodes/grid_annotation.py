@@ -45,5 +45,5 @@ class GridAnnotationNode(BaseNode):
 
     def _set_value_to_texts_list(self, texts_list: list[str]) -> list[str]:
         if not texts_list:
-            return ["None"]
+            return None
         return texts_list
