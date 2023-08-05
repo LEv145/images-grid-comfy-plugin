@@ -92,19 +92,24 @@ def _create_grid_annotation(
     row_texts: list[str],
     font: ImageFont.FreeTypeFont,
 ) -> Image.Image:
-    if not column_texts or not row_texts:
-        raise ValueError("Column text or row text is empty")
+    if not column_texts and not row_texts:
+        raise ValueError("Column text and row text is empty")
 
     grid = grid_info.image
-    left_padding = int(
-        max(
-            font.getlength(splitted_text)
-            for raw_text in row_texts
-            for splitted_text in raw_text.split("\n")
+    left_padding = 0
+    top_padding = 0
+
+    if row_texts:
+        left_padding = int(
+            max(
+                font.getlength(splitted_text)
+                for raw_text in row_texts
+                for splitted_text in raw_text.split("\n")
+            )
+            + font.getlength(WIDEST_LETTER)*2
         )
-        + font.getlength(WIDEST_LETTER)*2
-    )
-    top_padding = int(font.size * 2)
+    if column_texts:
+        top_padding = int(font.size * 2)
 
     image = Image.new(
         "RGB",
@@ -116,20 +121,22 @@ def _create_grid_annotation(
     draw.font = font  # type: ignore
 
     _paste_image_to_lower_left_corner(image, grid)
-    _draw_column_text(
-        draw=draw,
-        texts=column_texts,
-        grid_info=grid_info,
-        left_padding=left_padding,
-        top_padding=top_padding,
-    )
-    _draw_row_text(
-        draw=draw,
-        texts=row_texts,
-        grid_info=grid_info,
-        left_padding=left_padding,
-        top_padding=top_padding,
-    )
+    if column_texts:
+        _draw_column_text(
+            draw=draw,
+            texts=column_texts,
+            grid_info=grid_info,
+            left_padding=left_padding,
+            top_padding=top_padding,
+        )
+    if row_texts:
+        _draw_row_text(
+            draw=draw,
+            texts=row_texts,
+            grid_info=grid_info,
+            left_padding=left_padding,
+            top_padding=top_padding,
+        )
 
     return image
 

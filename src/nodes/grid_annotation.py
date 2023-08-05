@@ -26,12 +26,8 @@ class GridAnnotationNode(BaseNode):
         font_size: int,
     ) -> tuple[Annotation]:
         font = ImageFont.truetype(str(STATIC_PATH / "Roboto-Regular.ttf"), size=font_size)
-        column_texts_list = self._set_value_to_texts_list(
-            self._get_texts_from_string(column_texts),
-        )
-        row_texts_list = self._set_value_to_texts_list(
-            self._get_texts_from_string(row_texts),
-        )
+        column_texts_list = self._get_texts_from_string(column_texts)
+        row_texts_list = self._get_texts_from_string(row_texts)
 
         result = Annotation(column_texts=column_texts_list, row_texts=row_texts_list, font=font)
         return (result,)
@@ -42,8 +38,3 @@ class GridAnnotationNode(BaseNode):
             for i in string.split(";")
             if (result := i.strip()) != ""
         ]
-
-    def _set_value_to_texts_list(self, texts_list: list[str]) -> list[str]:
-        if not texts_list:
-            return ["None"]
-        return texts_list
