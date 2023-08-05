@@ -43,7 +43,7 @@ class GridAnnotationNode(BaseNode):
             if (result := i.strip()) != ""
         ]
 
-    def _set_value_to_texts_list(self, texts_list: list[str]) -> list[str]:
+    def _set_value_to_texts_list(self, texts_list: list[str]) -> list[str] | None:
         if not texts_list:
             return None
         return texts_list
