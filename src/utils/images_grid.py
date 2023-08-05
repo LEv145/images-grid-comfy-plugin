@@ -97,6 +97,8 @@ def _create_grid_annotation(
 
     grid = grid_info.image
     left_padding = 0
+    top_padding = 0
+
     if row_texts:
         left_padding = int(
             max(
@@ -106,7 +108,6 @@ def _create_grid_annotation(
             )
             + font.getlength(WIDEST_LETTER)*2
         )
-    top_padding = 0
     if column_texts:
         top_padding = int(font.size * 2)
 
