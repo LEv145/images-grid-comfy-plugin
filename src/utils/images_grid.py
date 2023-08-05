@@ -88,8 +88,8 @@ def _arrange_images_on_grid(
 
 def _create_grid_annotation(
     grid_info: _GridInfo,
-    column_texts: list[str],
-    row_texts: list[str],
+    column_texts: list[str] | None,
+    row_texts: list[str] | None,
     font: ImageFont.FreeTypeFont,
 ) -> Image.Image:
     if not column_texts and not row_texts:
