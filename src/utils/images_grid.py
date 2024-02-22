@@ -109,7 +109,7 @@ def _create_grid_annotation(
             + font.getlength(WIDEST_LETTER)*2
         )
     if column_texts:
-        top_padding = int(font.size * 2)
+        top_padding = max(col_text.count('\n') for col_text in column_texts) * int(font.size) + int(font.size * 2)
 
     image = Image.new(
         "RGB",
