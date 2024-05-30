@@ -1,14 +1,14 @@
 [project]
 name = "images-grid-comfy-plugin"
 description = "This tool provides a viewer node that allows for checking multiple outputs in a grid, similar to the X/Y Plot extension."
-version = "1.0.0"
+version = "2.6.0"
 license = "LICENSE"
 
+# Comfy UI
 [project.urls]
 Repository = "https://github.com/LEv145/images-grid-comfy-plugin"
-#  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "lev145"
 DisplayName = "images-grid-comfy-plugin"
-Icon = ""
+Icon = "https://img10.joyreactor.cc/pics/comment/Anime-%D1%84%D1%8D%D0%BD%D0%B4%D0%BE%D0%BC%D1%8B-vtuber-Neuro-sama-4808746.png"
