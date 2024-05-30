@@ -2,7 +2,7 @@
 name = "images-grid-comfy-plugin"
 description = "This tool provides a viewer node that allows for checking multiple outputs in a grid, similar to the X/Y Plot extension."
 version = "2.6.0"
-license = "LICENSE"
+license = "MIT"
 
 # Comfy UI
 [project.urls]
